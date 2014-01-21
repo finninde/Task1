@@ -16,7 +16,7 @@ public class MainGamePanelView extends SurfaceView implements SurfaceHolder.Call
 		super(context);
 		// adding the callback (this) to the surface holder to intercept events
 		getHolder().addCallback(this);
-		thread = new MainThread();	// adding MainThread as a private thread to the view
+		thread = new MainThread(getHolder(), this);	// adding MainThread as a private thread to the view
 		
 		// make the GamePanel focusable so it can handle events
 		setFocusable(true);

@@ -3,7 +3,7 @@ package com.example.task1;
 import android.view.SurfaceHolder;
 
 public class MainThread extends Thread{
-	private SurfaceHolder surfaceHolder;
+	private SurfaceHolder surfaceHolder; 	// bare surfaceholder kan låse panelet mens vi tegner
 	private MainGamePanelView gamePanelView;
 	private boolean isRunning;
 	
