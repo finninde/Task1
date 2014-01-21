@@ -1,7 +1,9 @@
 package com.example.task1;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -10,7 +12,7 @@ public class MainGamePanelView extends SurfaceView implements SurfaceHolder.Call
 	
 	private MainThread thread;
 	// adding MainThread as a private thread to the view
-	
+	private static final String TAG = MainGamePanelView.class.getSimpleName();
 	
 	public MainGamePanelView(Context context) {
 		super(context);
@@ -47,6 +49,15 @@ public class MainGamePanelView extends SurfaceView implements SurfaceHolder.Call
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
+		if (event.getAction() == MotionEvent.ACTION_DOWN){
+			if (event.getY() > getHeight() - 50){ // test, exits app if lower 50 pixel part of the screen
+				thread.setRunning(false);
+				((Activity)getContext()).finish();
+			}
+			else{
+				Log.d(TAG, "Coords: x=" + event.getX()+ ",y= " + event.getY());
+			}
+		}
 		return super.onTouchEvent(event);
 	}
 
