@@ -28,10 +28,21 @@ public class MainGamePanelView extends SurfaceView implements SurfaceHolder.Call
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
+		thread.setRunning(true);
+		thread.start();
 	}
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
+		boolean retry = true;
+		while(retry){
+			try {
+				thread.join();
+				retry=false;
+			} catch (InterruptedException e){
+				//TODO: try again
+			}
+		}
 	}
 
 	@Override
