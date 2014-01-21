@@ -7,11 +7,17 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 public class MainGamePanelView extends SurfaceView implements SurfaceHolder.Callback {
-
+	
+	private MainThread thread;
+	// adding MainThread as a private thread to the view
+	
+	
 	public MainGamePanelView(Context context) {
 		super(context);
 		// adding the callback (this) to the surface holder to intercept events
 		getHolder().addCallback(this);
+		thread = new MainThread();	// adding MainThread as a private thread to the view
+		
 		// make the GamePanel focusable so it can handle events
 		setFocusable(true);
 	}
