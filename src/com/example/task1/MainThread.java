@@ -1,8 +1,18 @@
 package com.example.task1;
 
-public class MainThread extends Thread{
+import android.view.SurfaceHolder;
 
+public class MainThread extends Thread{
+	private SurfaceHolder surfaceHolder;
+	private MainGamePanelView gamePanelView;
 	private boolean isRunning;
+	
+	public MainThread(SurfaceHolder surfaceHolder, MainGamePanelView gamePanelView){
+		super();
+		this.surfaceHolder = surfaceHolder;
+		this.gamePanelView = gamePanelView;
+		
+	}
 	
 	public void setRunning(boolean running){
 		this.isRunning = isRunning; 
